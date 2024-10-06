@@ -13,27 +13,27 @@
         for a list of supported elements and attributes
     -->
  
- 	<!-- Uncomment the changeset below if you want to make the Item class persistable, see also Item and MedicalsuppliesordersDaoTest -->
- 	<!--
-	<changeSet id="medicalsuppliesorders-2016-08-02-12-21" author="raff">
-		<preConditions onFail="MARK_RAN">
-			<not><tableExists tableName="medicalsuppliesorders_item"/></not>
-		</preConditions>
-		<comment>
-			Creating the medicalsuppliesorders_item table
-		</comment>
-		<createTable tableName="medicalsuppliesorders_item">
-			<column name="medicalsuppliesorders_item_id" type="int" autoIncrement="true">
-				<constraints primaryKey="true" nullable="false"/>
-			</column>
-			<column name="uuid" type="char(38)">
-				<constraints nullable="false" unique="true"></constraints>
-			</column>
-			<column name="owner" type="int" />
-			<column name="description" type="varchar(255)" />
-		</createTable>
-        <addForeignKeyConstraint constraintName="medicalsuppliesorders_item_owner_fk" baseTableName="medicalsuppliesorders_item" baseColumnNames="owner"  referencedTableName="users"
-                                 referencedColumnNames="user_id" />
-    </changeSet> -->
+ 	<changeSet id="${project.parent.artifactId}-202410021940" author="makombe">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="medical_supplies_order"/>
+            </not>
+        </preConditions>
+        <comment>Create medical_supplies_order table</comment>
+        <createTable tableName="medical_supplies_order">
+            <column name="order_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="medical_supplies_inventory_id" type="int"/>
+            <column name="quantity" type="int"/>
+			<column name="quantity_units" type="varchar(50)" />
+            <column name="brand_name" type="varchar(100)"/>
+        </createTable>
+
+        <addForeignKeyConstraint constraintName="medical_supplies_order_order_id_fk"
+                                 baseTableName="medical_supplies_order" baseColumnNames="order_id"
+                                 referencedTableName="orders" referencedColumnNames="order_id"/>
+    
+    </changeSet>
  
 </databaseChangeLog>

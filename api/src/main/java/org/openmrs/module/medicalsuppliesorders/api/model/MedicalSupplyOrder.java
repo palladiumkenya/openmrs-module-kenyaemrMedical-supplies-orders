@@ -12,7 +12,7 @@ package org.openmrs.module.medicalsuppliesorders.api.model;
 
 import org.openmrs.ServiceOrder;
 
-public class MedicalSuppliesOrder extends ServiceOrder {
+public class MedicalSupplyOrder extends ServiceOrder {
 	
 	public static final long serialVersionUID = 1L;
 	
@@ -24,12 +24,12 @@ public class MedicalSuppliesOrder extends ServiceOrder {
 	
 	private Integer medicalSuppliesInventoryId;
 	
-	public MedicalSuppliesOrder() {
+	public MedicalSupplyOrder() {
 	}
 	
 	@Override
-	public MedicalSuppliesOrder copy() {
-		MedicalSuppliesOrder newOrder = new MedicalSuppliesOrder();
+	public MedicalSupplyOrder copy() {
+		MedicalSupplyOrder newOrder = new MedicalSupplyOrder();
 		super.copyHelper(newOrder);
 		return newOrder;
 	}
@@ -41,8 +41,8 @@ public class MedicalSuppliesOrder extends ServiceOrder {
 	 * @see org.openmrs.ServiceOrder#cloneForDiscontinuing()
 	 */
 	@Override
-	public MedicalSuppliesOrder cloneForDiscontinuing() {
-		MedicalSuppliesOrder newOrder = new MedicalSuppliesOrder();
+	public MedicalSupplyOrder cloneForDiscontinuing() {
+		MedicalSupplyOrder newOrder = new MedicalSupplyOrder();
 		super.cloneForDiscontinuingHelper(newOrder);
 		return newOrder;
 	}
@@ -54,8 +54,8 @@ public class MedicalSuppliesOrder extends ServiceOrder {
 	 * @return the newly created order
 	 */
 	@Override
-	public MedicalSuppliesOrder cloneForRevision() {
-		MedicalSuppliesOrder newOrder = new MedicalSuppliesOrder();
+	public MedicalSupplyOrder cloneForRevision() {
+		MedicalSupplyOrder newOrder = new MedicalSupplyOrder();
 		super.cloneForRevisionHelper(newOrder);
 		return newOrder;
 	}

@@ -28,7 +28,7 @@
 	
 	<!-- Maps hibernate files, if present -->
 	<mappingFiles>
-		MedicalSuppliesOrder.hbm.xml
+		MedicalSupplyOrder.hbm.xml
 	</mappingFiles>
 	
 	

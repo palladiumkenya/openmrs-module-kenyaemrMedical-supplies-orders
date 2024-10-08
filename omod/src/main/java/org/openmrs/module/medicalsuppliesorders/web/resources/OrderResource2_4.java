@@ -12,7 +12,7 @@ import org.openmrs.module.webservices.rest.web.RestConstants;
 import org.openmrs.module.webservices.rest.web.annotation.Resource;
 import org.openmrs.module.webservices.rest.web.v1_0.resource.openmrs2_2.OrderResource2_2;
 
-@Resource(name = RestConstants.VERSION_1 + "/order", supportedClass = Order.class, supportedOpenmrsVersions = { "2.6.* - 9.*" })
+@Resource(name = RestConstants.VERSION_1 + "/medicalsupplyorder", supportedClass = Order.class, supportedOpenmrsVersions = { "2.6.* - 9.*" })
 public class OrderResource2_4 extends OrderResource2_2 {
 	
 	private String MEDICAL_SUPPLY_ORDER_TYPE_UUID = "dab3ab30-2feb-48ec-b4af-8332a0831b49";

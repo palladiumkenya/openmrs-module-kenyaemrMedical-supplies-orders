@@ -152,6 +152,83 @@
 		</dependencies>
 
 	</dependencyManagement>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>3.1.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.openmrs.maven.plugins</groupId>
+					<artifactId>maven-openmrs-plugin</artifactId>
+					<version>1.0.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.commonjava.maven.plugins</groupId>
+					<artifactId>directory-maven-plugin</artifactId>
+					<version>0.1</version>
+					<executions>
+						<execution>
+							<id>directories</id>
+							<goals>
+								<goal>highest-basedir</goal>
+							</goals>
+							<phase>validate</phase>
+							<configuration>
+								<property>main.basedir</property>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>net.revelc.code.formatter</groupId>
+					<artifactId>formatter-maven-plugin</artifactId>
+					<version>2.13.0</version>
+					<configuration>
+						<lineEnding>LF</lineEnding>
+						<configFile>eclipse/OpenMRSFormatter.xml</configFile>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.openmrs.tools</groupId>
+							<artifactId>openmrs-tools</artifactId>
+							<version>${openmrs.platform.tools.version}</version>
+						</dependency>
+					</dependencies>
+					<executions>
+						<execution>
+							<goals>
+								<goal>format</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>net.revelc.code</groupId>
+					<artifactId>impsort-maven-plugin</artifactId>
+					<version>1.5.0</version>
+					<configuration>
+						<groups>javax, java, *</groups>
+						<removeUnused>true</removeUnused>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>sort</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
     <properties>
        <webServicesRest.version>2.32.0</webServicesRest.version>

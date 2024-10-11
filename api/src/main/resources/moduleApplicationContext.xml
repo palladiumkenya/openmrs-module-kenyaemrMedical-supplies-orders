@@ -27,32 +27,32 @@
 
     <!-- Wraps MedicalsuppliesordersService methods in DB transactions and OpenMRS interceptors,
     which set audit info like dateCreated, changedBy, etc.-->
-    <bean id="medicalsuppliesorders.MedicalsuppliesordersService"
-            class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-        <property name="transactionManager">
-            <ref bean="transactionManager" />
-        </property>
+    <bean id="medicalSupplyDispenseService"
+          class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
         <property name="target">
-            <bean class="org.openmrs.module.medicalsuppliesorders.api.impl.MedicalsuppliesordersServiceImpl">
-                <property name="dao" ref="medicalsuppliesorders.MedicalsuppliesordersDao" />
+            <bean class="org.openmrs.module.medicalsuppliesorders.api.impl.MedicalSupplyDispenseServiceImpl">
+                <property name="medicalSupplyDispenseDao" ref="medicalSupplyDispenseDao"/>
             </bean>
         </property>
-        <property name="preInterceptors">
-            <ref bean="serviceInterceptors" />
-        </property>
-        <property name="transactionAttributeSource">
-            <ref bean="transactionAttributeSource" />
+        <property name="preInterceptors" ref="serviceInterceptors"/>
+        <property name="transactionAttributeSource" ref="transactionAttributeSource"/>
+    </bean>
+    <bean parent="serviceContext">
+        <property name="moduleService">
+             <list>
+                <value>org.openmrs.module.medicalsuppliesorders.api.MedicalSupplyDispenseService</value>
+                <ref bean="medicalSupplyDispenseService"/>
+            </list>
+            
         </property>
     </bean>
 
-    <!-- Adds MedicalsuppliesordersService to OpenMRS context so it can be accessed
-    calling Context.getService(MedicalsuppliesordersService.class) -->
-    <bean parent="serviceContext">
-        <property name="moduleService">
-            <list>
-                <value>org.openmrs.module.medicalsuppliesorders.api.MedicalsuppliesordersService</value>
-                <ref bean="medicalsuppliesorders.MedicalsuppliesordersService" />
-            </list>
+    <bean id="medicalSupplyDispenseDao" class="org.openmrs.module.medicalsuppliesorders.api.dao.impl.MedicalSupplyDispenseImpl">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
         </property>
     </bean>
+
+
 </beans>

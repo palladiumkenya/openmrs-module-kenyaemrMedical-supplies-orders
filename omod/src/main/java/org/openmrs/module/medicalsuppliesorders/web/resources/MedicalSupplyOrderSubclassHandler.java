@@ -1,16 +1,12 @@
 package org.openmrs.module.medicalsuppliesorders.web.resources;
 
-import org.openmrs.module.medicalsuppliesorders.api.model.MedicalSupplyOrder;
-
-import java.util.ArrayList;
 import io.swagger.models.Model;
 import io.swagger.models.ModelImpl;
 import io.swagger.models.properties.IntegerProperty;
-import io.swagger.models.properties.RefProperty;
 import io.swagger.models.properties.StringProperty;
 import org.openmrs.Order;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.webservices.docs.swagger.core.property.EnumProperty;
+import org.openmrs.module.medicalsuppliesorders.api.model.MedicalSupplyOrder;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.annotation.PropertyGetter;
 import org.openmrs.module.webservices.rest.web.annotation.SubClassHandler;
@@ -24,9 +20,6 @@ import org.openmrs.module.webservices.rest.web.resource.impl.BaseDelegatingSubcl
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingSubclassHandler;
 import org.openmrs.module.webservices.rest.web.response.ResourceDoesNotSupportOperationException;
-
-import io.swagger.models.ModelImpl;
-import io.swagger.models.properties.RefProperty;
 
 @SubClassHandler(supportedClass = MedicalSupplyOrder.class, supportedOpenmrsVersions = { "2.6.* - 9.*" })
 public class MedicalSupplyOrderSubclassHandler extends BaseDelegatingSubclassHandler<Order, MedicalSupplyOrder> implements DelegatingSubclassHandler<Order, MedicalSupplyOrder> {

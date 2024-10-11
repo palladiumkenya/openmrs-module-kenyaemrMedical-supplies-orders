@@ -9,16 +9,15 @@
  */
 package org.openmrs.module.medicalsuppliesorders.web.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
+
+import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.User;
 import org.openmrs.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,8 +70,8 @@ public class MedicalsuppliesordersController {
 	
 	/**
 	 * This class returns the form backing object. This can be a string, a boolean, or a normal java
-	 * pojo. The bean name defined in the ModelAttribute annotation and the type can be just defined
-	 * by the return type of this method
+	 * pojo. The bean name defined in the ModelAttribute annotation and the type can be just defined by
+	 * the return type of this method
 	 */
 	@ModelAttribute("users")
 	protected List<User> getUsers() throws Exception {

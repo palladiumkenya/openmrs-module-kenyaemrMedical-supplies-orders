@@ -21,8 +21,15 @@ jobs:
           distribution: "temurin"
           java-version: "8"
 
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
       - name: Build with Maven
-        run: mvn -B package -DskipTests
+        run: mvn -B clean install -DskipTests
 
   publish:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
@@ -37,6 +44,13 @@ jobs:
         with:
           distribution: "temurin"
           java-version: "8"
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
 
       - name: Set settings.xml
         uses: s4u/maven-settings-action@v3.0.0
@@ -53,5 +67,8 @@ jobs:
               "password": "${{ secrets.MAVEN_TOKEN }}"
             }]
 
+      - name: Resolve Maven dependencies
+        run: mvn -B dependency:resolve-plugins dependency:resolve
+
       - name: Publish
-        run: mvn --batch-mode clean deploy -DskipTests
+        run: mvn --batch-mode clean install deploy -DskipTests
